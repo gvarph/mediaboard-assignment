@@ -11,3 +11,10 @@ dev = [
     "pyright>=1.1.403",
     "ruff>=0.12.3",
 ]
+
+[tool.pyright]
+venvPath = ".venv"
+pythonVersion = "3.13"
+typeCheckingMode = "strict"
+reportUnnecessaryTypeIgnoreComment = true #Reports when a type ignore comment is unnecessary
+enableTypeIgnoreComments = false          #Forces use of the more specific # pyright: ignore[...] comments
