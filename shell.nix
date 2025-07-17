@@ -4,4 +4,8 @@ pkgs.mkShell {
     pkgs.python313
     pkgs.uv
   ];
+  # Add drivers to the library path
+  LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+    pkgs.stdenv.cc.cc
+  ];
 }
