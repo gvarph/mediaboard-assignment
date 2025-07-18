@@ -18,3 +18,17 @@ Techincal interview home assignment
 ## Usage
 
 After running the app, you can see the API docs at `http://localhost:8000/docs` (interactive) or `http://localhost:8000/redoc` (slightly better looking but you can't call the endpoints from there)
+
+## Validation
+
+### Tests
+
+To run the tests, run `uv run python -m pytest tests/test_full_run`
+
+### Linting
+
+To run the linter, run `uv run ruff check`
+
+### Type checking
+
+To run the type checker, run `uv run pyright`
