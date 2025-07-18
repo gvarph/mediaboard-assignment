@@ -9,8 +9,8 @@ from app.scraper.movie_page import find_actors_in_movie_page
 from .list_of_movies import crawl_top_movies_producer
 from .schemas import ActorInfo, MovieInfo
 
-# Heuristic value - largest that wasn't getting rate limited
-MAX_CONCURRENT_REQUESTS = 25
+# Heuristic value, with more, the BS4 parser was exhausting my CPU which lead to dropped requests
+MAX_CONCURRENT_REQUESTS = 15
 
 # CSFD only offers up to 10 pages (1-1000) of top movies
 MAX_PAGES = 10
