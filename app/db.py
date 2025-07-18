@@ -1,7 +1,7 @@
 from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 from pathlib import Path
-from typing import Annotated
+from typing import Annotated, Literal
 
 from pydantic import AfterValidator
 from sqlalchemy.ext.asyncio import (
@@ -25,10 +25,13 @@ def validate_sqlite_path(path: Path) -> Path:  # noqa: D103
     return path
 
 
-SQLitePath = Annotated[
-    Path,
-    AfterValidator(validate_sqlite_path),
-]
+SQLitePath = (
+    Annotated[
+        Path,
+        AfterValidator(validate_sqlite_path),
+    ]
+    | Literal[":memory:"]
+)
 
 
 class DBContext:  # noqa: D101

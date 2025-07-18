@@ -19,6 +19,8 @@ dependencies = [
 dev = [
     "pre-commit>=4.2.0",
     "pyright>=1.1.403",
+    "pytest>=8.4.1",
+    "pytest-env>=1.1.5",
     "ruff>=0.12.3",
 ]
 
@@ -67,3 +69,11 @@ lint.ignore = [
     "PLR2004", # Magic values in comparison
     "D",       # pydocstyle
 ]
+
+[tool.pytest.ini_options]
+
+
+env = ["SQLITE_FILE_PATH=:memory:"]
+
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"

@@ -1,3 +1,4 @@
+import os
 from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 
@@ -9,7 +10,8 @@ from app.logger import logger
 from app.routers.crawl import router as crawl_router
 from app.routers.read import router as read_router
 
-SQLITE_FILE_PATH = RootModel[SQLitePath].model_validate("./crawled.db").root
+SQLITE_FILE_PATH_ENV = os.getenv("SQLITE_FILE_PATH") or "./crawled.db"
+SQLITE_FILE_PATH = RootModel[SQLitePath].model_validate(SQLITE_FILE_PATH_ENV).root
 
 
 @asynccontextmanager
