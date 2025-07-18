@@ -7,6 +7,7 @@ from pydantic import RootModel
 from app.db import SQLitePath, create_db_context
 from app.logger import logger
 from app.routers.crawl import router as crawl_router
+from app.routers.read import router as read_router
 
 SQLITE_FILE_PATH = RootModel[SQLitePath].model_validate("./crawled.db").root
 
@@ -22,4 +23,5 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None]:
 
 app = FastAPI(lifespan=lifespan)
 
+app.include_router(read_router)
 app.include_router(crawl_router)
